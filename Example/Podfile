@@ -2,10 +2,4 @@ use_frameworks!
 
 target 'KRZoomingLayout_Example' do
   pod 'KRZoomingLayout', :path => '../'
-
-  target 'KRZoomingLayout_Tests' do
-    inherit! :search_paths
-
-    
-  end
 end

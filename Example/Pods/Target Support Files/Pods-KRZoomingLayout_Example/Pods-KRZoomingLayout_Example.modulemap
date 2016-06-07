@@ -1,0 +1,6 @@
+framework module Pods_KRZoomingLayout_Example {
+  umbrella header "Pods-KRZoomingLayout_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}

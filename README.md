@@ -1,6 +1,6 @@
 # KRZoomingLayout
 
-[![CI Status](http://img.shields.io/travis/Joshua Park/KRZoomingLayout.svg?style=flat)](https://travis-ci.org/Joshua Park/KRZoomingLayout)
+[![CI Status](http://img.shields.io/travis/Josh Woomin Park/KRZoomingLayout.svg?style=flat)](https://travis-ci.org/Joshua Park/KRZoomingLayout)
 [![Version](https://img.shields.io/cocoapods/v/KRZoomingLayout.svg?style=flat)](http://cocoapods.org/pods/KRZoomingLayout)
 [![License](https://img.shields.io/cocoapods/l/KRZoomingLayout.svg?style=flat)](http://cocoapods.org/pods/KRZoomingLayout)
 [![Platform](https://img.shields.io/cocoapods/p/KRZoomingLayout.svg?style=flat)](http://cocoapods.org/pods/KRZoomingLayout)
@@ -17,12 +17,12 @@ KRZoomingLayout is available through [CocoaPods](http://cocoapods.org). To insta
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod "KRZoomingLayout"
+pod 'KRZoomingLayout' :git => 'https://github.com/BridgeTheGap/KRZoomingLayout.git'
 ```
 
 ## Author
 
-Joshua Park, wmpark@knowre.com
+Josh Woomin Park, wmpark@knowre.com
 
 ## License
 

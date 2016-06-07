@@ -1,0 +1,6 @@
+framework module KRZoomingLayout {
+  umbrella header "KRZoomingLayout-umbrella.h"
+
+  export *
+  module * { export * }
+}

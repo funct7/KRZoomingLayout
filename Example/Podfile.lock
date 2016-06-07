@@ -1,0 +1,14 @@
+PODS:
+  - KRZoomingLayout (0.8.0)
+
+DEPENDENCIES:
+  - KRZoomingLayout (from `../`)
+
+EXTERNAL SOURCES:
+  KRZoomingLayout:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  KRZoomingLayout: bbe6f6d28f1ac8f03f30bbda65be2e21516cee2c
+
+COCOAPODS: 0.39.0
