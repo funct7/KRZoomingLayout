@@ -12,26 +12,27 @@ private var Screen: UIScreen {
     return UIScreen.mainScreen()
 }
 
-class ZoomingLayout: UICollectionViewFlowLayout {
+@IBDesignable
+public class ZoomingLayout: UICollectionViewFlowLayout {
     
-    var zoomScale: CGFloat = 1.25
+    @IBInspectable public var zoomScale: CGFloat = 1.0
     
-    override func layoutAttributesForElementsInRect(rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-        assert(zoomScale > 1.0, "Zoom scale for layout must be greater than 1.0.")
-        
+    public override func layoutAttributesForElementsInRect(rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         var arrAttribs = [UICollectionViewLayoutAttributes]()
         let itemMeasure = scrollDirection == .Vertical ? itemSize.height : itemSize.width
         let contentOffset = scrollDirection == .Vertical ? collectionView!.contentOffset.y + collectionView!.contentInset.top : collectionView!.contentOffset.x + collectionView!.contentInset.left
         let screenCenter = contentOffset + itemMeasure / 2.0
+        let maxScale = zoomScale > 1.0 ? zoomScale : 1.0
+        let minScale = zoomScale > 1.0 ? 1.0 : zoomScale
         
         for attribs in super.layoutAttributesForElementsInRect(rect)! {
             let cellCenter = scrollDirection == .Vertical ? attribs.center.y : attribs.center.x
             
             if contentOffset < cellCenter && cellCenter < contentOffset + itemMeasure {
-                let scale = 1.0 + (zoomScale - 1.0) * (1 - abs(screenCenter - cellCenter) / (itemMeasure / 2.0))
+                let scale = minScale + (maxScale - minScale) * (1 - abs(screenCenter - cellCenter) / (itemMeasure / 2.0))
                 attribs.transform = CGAffineTransformMakeScale(scale, scale)
             } else {
-                attribs.transform = CGAffineTransformMakeScale(1.0, 1.0)
+                attribs.transform = CGAffineTransformMakeScale(minScale, minScale)
             }
             arrAttribs.append(attribs)
         }
@@ -39,7 +40,7 @@ class ZoomingLayout: UICollectionViewFlowLayout {
         return arrAttribs
     }
     
-    override func targetContentOffsetForProposedContentOffset(proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
+    public override func targetContentOffsetForProposedContentOffset(proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
         var contentOffset = proposedContentOffset
         let inset = scrollDirection == .Vertical ? collectionView!.contentInset.top : collectionView!.contentInset.left
         let absVelocity = scrollDirection == .Vertical ? abs(velocity.y) : abs(velocity.x)
@@ -85,7 +86,7 @@ class ZoomingLayout: UICollectionViewFlowLayout {
         return contentOffset
     }
     
-    override func shouldInvalidateLayoutForBoundsChange(newBounds: CGRect) -> Bool {
+    public override func shouldInvalidateLayoutForBoundsChange(newBounds: CGRect) -> Bool {
         return true
     }
 }
