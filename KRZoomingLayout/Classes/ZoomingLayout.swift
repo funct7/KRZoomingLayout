@@ -44,7 +44,7 @@ public class ZoomingLayout: UICollectionViewFlowLayout {
         var contentOffset = proposedContentOffset
         let inset = scrollDirection == .Vertical ? collectionView!.contentInset.top : collectionView!.contentInset.left
         let absVelocity = scrollDirection == .Vertical ? abs(velocity.y) : abs(velocity.x)
-        let fullItemMeasure = scrollDirection == .Vertical ? itemSize.height + minimumLineSpacing : itemSize.width + minimumInteritemSpacing
+        let fullItemMeasure = scrollDirection == .Vertical ? itemSize.height + minimumInteritemSpacing : itemSize.width + minimumLineSpacing 
         
         switch absVelocity {
         case 0.0 ..< 0.2:
