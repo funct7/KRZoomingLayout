@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'KRZoomingLayout'
-  s.version          = '0.9.1'
+  s.version          = '0.10.0'
   s.summary          = 'A collection view flow layout subclass that zooms the center item to the specified scale.'
 
 # This description is used to generate tags and improve search results.
