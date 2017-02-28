@@ -33,30 +33,30 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     // MARK: - Private
     
-    private func scrollToCenter(indexPath: NSIndexPath) {
-        let cell = self.collectionView.cellForItemAtIndexPath(indexPath)!
+    fileprivate func scrollToCenter(_ indexPath: IndexPath) {
+        let cell = self.collectionView.cellForItem(at: indexPath)!
         if let flowLayout = self.collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            if flowLayout.scrollDirection == .Vertical {
+            if flowLayout.scrollDirection == .vertical {
                 let offsetX = self.collectionView.contentOffset.x
                 let offsetY = cell.center.y - (CELL_SIZE / 2.0) - self.collectionView.contentInset.top
-                self.collectionView.setContentOffset(CGPointMake(offsetX, offsetY), animated: true)
+                self.collectionView.setContentOffset(CGPoint(x: offsetX, y: offsetY), animated: true)
             } else {
                 let offsetX = cell.center.x - (CELL_SIZE / 2.0) - self.collectionView.contentInset.left
                 let offsetY = self.collectionView.contentOffset.y
-                self.collectionView.setContentOffset(CGPointMake(offsetX, offsetY), animated: true)
+                self.collectionView.setContentOffset(CGPoint(x: offsetX, y: offsetY), animated: true)
             }
         }
     }
     
     // MARK: - Collection view
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 15
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath)
-        cell.layer.borderColor = UIColor.redColor().CGColor
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
+        cell.layer.borderColor = UIColor.red.cgColor
         cell.layer.borderWidth = 2.0
         
         let label = cell.viewWithTag(ViewTag.Label) as! UILabel
@@ -65,7 +65,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         return cell
     }
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.scrollToCenter(indexPath)
     }
 }
